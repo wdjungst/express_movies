@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <% include ./partials/head %>
+ </head>
+ <body>
+   <header>
+     <% include ./partials/header %>
+   </header>
+   <h1 class='center'>My Movies</h1>
+   <hr />
+   <div class='row'>
+     <div class='col s12 m4'>
+       <h3>Add Movie</h3>
+       <form action='/movies' method='post'>
+         <input type='text' name='name' placeholder='name' />
+         <button class='btn btn-waves' type='submit'>Add</button>
+       </form>
+     </div>
+     <table class='table col m8 s12'>
+       <thead>
+         <th>Title</th>
+         <th>x</th>
+       </thead>
+       <tbody>
+         <% movies.forEach( function(movie) { %>
+           <% var href='/movies/delete/' + movie %>
+           <tr>
+             <td><%= movie %></td>
+             <td><a href=<%= href %> + <%= movie %></a>Delete</td>
+         <% }); %>
+       </tbody>
+     </table>
+   </body>
+</html>
